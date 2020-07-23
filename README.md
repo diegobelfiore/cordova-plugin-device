@@ -2,6 +2,7 @@
 title: Device
 description: Get device information.
 ---
+
 <!--
 # license: Licensed to the Apache Software Foundation (ASF) under one
 #         or more contributor license agreements.  See the NOTICE file
@@ -21,14 +22,20 @@ description: Get device information.
 #         under the License.
 -->
 
-|AppVeyor|Travis CI|
-|:-:|:-:|
-|[![Build status](https://ci.appveyor.com/api/projects/status/github/apache/cordova-plugin-device?branch=master)](https://ci.appveyor.com/project/ApacheSoftwareFoundation/cordova-plugin-device)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device)|
+|                                                                                             AppVeyor                                                                                             |                                                                  Travis CI                                                                  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Build status](https://ci.appveyor.com/api/projects/status/github/apache/cordova-plugin-device?branch=master)](https://ci.appveyor.com/project/ApacheSoftwareFoundation/cordova-plugin-device) | [![Build Status](https://travis-ci.org/apache/cordova-plugin-device.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-device) |
+
+# This Fork
+
+This fork is a first attempt at creating a Cordova plugin following
+[this tutorial](https://medium.com/ionic-and-the-mobile-web/how-to-write-cordova-plugins-864e40025f2).
 
 # cordova-plugin-device
 
-This plugin defines a global `device` object, which describes the device's hardware and software.
-Although the object is in the global scope, it is not available until after the `deviceready` event.
+This plugin defines a global `device` object, which describes the device's
+hardware and software. Although the object is in the global scope, it is not
+available until after the `deviceready` event.
 
 ```js
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -43,14 +50,14 @@ function onDeviceReady() {
 
 ## Properties
 
-- device.cordova
-- device.model
-- device.platform
-- device.uuid
-- device.version
-- device.manufacturer
-- device.isVirtual
-- device.serial
+-   device.cordova
+-   device.model
+-   device.platform
+-   device.uuid
+-   device.version
+-   device.manufacturer
+-   device.isVirtual
+-   device.serial
 
 ## device.cordova
 
@@ -58,25 +65,25 @@ Get the version of Cordova running on the device.
 
 ### Supported Platforms
 
-- Android
-- Browser
-- iOS
-- Windows
-- OSX
+-   Android
+-   Browser
+-   iOS
+-   Windows
+-   OSX
 
 ## device.model
 
-The `device.model` returns the name of the device's model or
-product. The value is set by the device manufacturer and may be
-different across versions of the same product.
+The `device.model` returns the name of the device's model or product. The value
+is set by the device manufacturer and may be different across versions of the
+same product.
 
 ### Supported Platforms
 
-- Android
-- Browser
-- iOS
-- Windows
-- OSX
+-   Android
+-   Browser
+-   iOS
+-   Windows
+-   OSX
 
 ### Quick Example
 
@@ -94,7 +101,12 @@ var model = device.model;
 
 ### Android Quirks
 
-- Gets the [product name](http://developer.android.com/reference/android/os/Build.html#PRODUCT) instead of the [model name](http://developer.android.com/reference/android/os/Build.html#MODEL), which is often the production code name. For example, the Nexus One returns `Passion`, and Motorola Droid returns `voles`.
+-   Gets the
+    [product name](http://developer.android.com/reference/android/os/Build.html#PRODUCT)
+    instead of the
+    [model name](http://developer.android.com/reference/android/os/Build.html#MODEL),
+    which is often the production code name. For example, the Nexus One returns
+    `Passion`, and Motorola Droid returns `voles`.
 
 ## device.platform
 
@@ -103,13 +115,14 @@ Get the device's operating system name.
 ```js
 var string = device.platform;
 ```
+
 ### Supported Platforms
 
-- Android
-- Browser
-- iOS
-- Windows
-- OSX
+-   Android
+-   Browser
+-   iOS
+-   Windows
+-   OSX
 
 ### Quick Example
 
@@ -127,7 +140,8 @@ var devicePlatform = device.platform;
 
 ## device.uuid
 
-Get the device's Universally Unique Identifier ([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
+Get the device's Universally Unique Identifier
+([UUID](http://en.wikipedia.org/wiki/Universally_Unique_Identifier)).
 
 ```js
 var string = device.uuid;
@@ -135,14 +149,15 @@ var string = device.uuid;
 
 ### Description
 
-The details of how a UUID is generated are determined by the device manufacturer and are specific to the device's platform or model.
+The details of how a UUID is generated are determined by the device manufacturer
+and are specific to the device's platform or model.
 
 ### Supported Platforms
 
-- Android
-- iOS
-- Windows
-- OSX
+-   Android
+-   iOS
+-   Windows
+-   OSX
 
 ### Quick Example
 
@@ -164,13 +179,19 @@ var deviceID = device.uuid;
 
 ### iOS Quirk
 
-The `uuid` on iOS uses the identifierForVendor property. It is unique to the device across the same vendor, but will be different for different vendors and will change if all apps from the vendor are deleted and then reinstalled.
-Refer [here](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor) for details.
-The UUID will be the same if app is restored from a backup or iCloud as it is saved in preferences. Users using older versions of this plugin will still receive the same previous UUID generated by another means as it will be retrieved from preferences.
+The `uuid` on iOS uses the identifierForVendor property. It is unique to the
+device across the same vendor, but will be different for different vendors and
+will change if all apps from the vendor are deleted and then reinstalled. Refer
+[here](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/#//apple_ref/occ/instp/UIDevice/identifierForVendor)
+for details. The UUID will be the same if app is restored from a backup or
+iCloud as it is saved in preferences. Users using older versions of this plugin
+will still receive the same previous UUID generated by another means as it will
+be retrieved from preferences.
 
 ### OSX Quirk
 
-The `uuid` on OSX is generated automatically if it does not exist yet and is stored in the `standardUserDefaults` in the `CDVUUID` property.
+The `uuid` on OSX is generated automatically if it does not exist yet and is
+stored in the `standardUserDefaults` in the `CDVUUID` property.
 
 ## device.version
 
@@ -180,11 +201,11 @@ Get the operating system version.
 
 ### Supported Platforms
 
-- Android 2.1+
-- Browser
-- iOS
-- Windows
-- OSX
+-   Android 2.1+
+-   Browser
+-   iOS
+-   Windows
+-   OSX
 
 ### Quick Example
 
@@ -215,9 +236,9 @@ Get the device's manufacturer.
 
 ### Supported Platforms
 
-- Android
-- iOS
-- Windows
+-   Android
+-   iOS
+-   Windows
 
 ### Quick Example
 
@@ -239,11 +260,11 @@ var isSim = device.isVirtual;
 
 ### Supported Platforms
 
-- Android 2.1+
-- Browser
-- iOS
-- Windows
-- OSX
+-   Android 2.1+
+-   Browser
+-   iOS
+-   Windows
+-   OSX
 
 ### OSX and Browser Quirk
 
@@ -251,7 +272,8 @@ The `isVirtual` property on OS X and Browser always returns false.
 
 ## device.serial
 
-Get the device hardware serial number ([SERIAL](http://developer.android.com/reference/android/os/Build.html#SERIAL)).
+Get the device hardware serial number
+([SERIAL](http://developer.android.com/reference/android/os/Build.html#SERIAL)).
 
 ```js
 var string = device.serial;
@@ -259,6 +281,5 @@ var string = device.serial;
 
 ### Supported Platforms
 
-- Android
-- OSX
-
+-   Android
+-   OSX
